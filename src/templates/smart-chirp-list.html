@@ -1,0 +1,63 @@
+<ion-view id="smartChirpList" view-title="SmartChirp">
+  <ion-nav-title class="chirp-menu-bar">
+    <div class="bar-container">
+      <span class="chirplist-title">Smart Chirp</span>
+    </div>
+  </ion-nav-title>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+    </button>
+    <button id="refresh-button" class="button button-clear" ng-click="refreshChirps()"><i class="icon ion-loop"></i>
+    </button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button id="newchirp-button" class="button button-clear" ui-sref="app.smart-chirp-new"><i class="icon ion-compose"></i> New</button>
+  </ion-nav-buttons>
+  <ion-content has-bouncing="true" class="keepScrollPos" overflow-scroll="true" scrolly="getMoreChirps()" canload="messages.hasNext">
+    <header ng-style="bgStyle">
+      <img ng-src="{{loading.avatarURL}}" class="logo" />
+      <!--img class="logo" ng-src="https://pbs.twimg.com/profile_images/415487749580279808/LwjSwmXG_400x400.jpeg" /-->
+      <div class="name">{{loading.nameText}}</div>
+    </header>
+    <ion-list>
+      <ion-item bindonce ng-repeat="item in messages.items | orderBy:'date':true" class="item-text-wrap">
+        <div bo-id="'chirp-' + item.id">
+          <div class="row user">
+            <div class="col col-20">
+              <img bo-src="item.avatar_image" class="avatar-circle" />
+            </div>
+            <div class="col col-80">
+              <div class="right time"><span am-time-ago="item.date" am-preprocess="unix"></span> - <span bo-text="item.hours"></span></div>
+              <h2 bo-text="item.name"></h2>
+              <div class="stars"><i class="star" bo-class="'star-' + item.stars"></i>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="attach text-center" ng-repeat="attach in item.attach">
+                <a class="" href="#" ng-click="showAttach(attach.media_type, attach.file, attach.thumbnail)">
+                  <img bo-src="attach.thumbnail" />
+                  <div class="overlayPlayContainer" ng-if="attach.media_type.indexOf('image') !== 0">
+                    <i class="icon ion-play"></i>
+                  </div>
+                </a>
+              </div>
+              <div class="message" ng-bind-html="::item.message" linkify></div>
+              <div ng-show="item.comments > 0" class="comments"><a class="button button-clear button-positive" ui-sref="app.smart-chirp-single({smartchirpId: item.id})"><span bo-text="item.comments"></span> <span ng-if="item.comments == 1">comment</span><span ng-if="item.comments > 1">comments</span></a></div>
+            </div>
+          </div>
+          <div class="actions tabs tabs-icon-left">
+            <a class="tab-item" href="#" ng-click="markAsSpam(item.id)"><i class="icon ion-android-alert"></i> Spam</a>
+            <a class="tab-item" href="#" ng-click="deleteMessage(item.id)" ng-if="item.can_be_deleted"><i class="icon ion-android-cancel"></i> Delete</a>
+            <span class="tab-item" ng-if="!item.can_be_deleted"><i class="icon ion-android-cancel"></i> Delete</span>
+            <a class="tab-item" ui-sref="app.smart-chirp-single({smartchirpId: item.id})"><i class="icon ion-chatbubble-working"></i> Comment</a>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+    <div class="infinite-loading text-center" ng-if="messages.hasNext">
+      <ion-spinner icon="android"></ion-spinner>
+    </div>
+  </ion-content>
+</ion-view>

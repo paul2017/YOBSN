@@ -1,0 +1,73 @@
+<ion-view view-title="{{view_title}}">
+
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-click="OnClickMoveGroup($event)">
+      <img src="img/icon/friend-icons/move-to-another-group@2x.png" style="height: 24px; margin-top: 5px;margin-right:10px;">
+    </button>
+  </ion-nav-buttons>
+
+  <div class="bar bar-stable bar-subheader item-input-inset filter-friend">
+    <label class="item-input-wrapper filter-friend">
+      <i class="icon ion-ios7-search placeholder-icon"></i>
+      <input type="search" placeholder="filter by friends" ng-click="onClickFilter()" ng-model="filter_word" >
+    </label>
+    <button class="button button-clear filter-friend ng-hide" ng-show="showFilterCancel" ng-click="onClickCancel()">
+      Cancel
+    </button>
+  </div>
+
+  <ion-content has-bouncing="true" class="has-subheader group-friend-list">
+    
+    <ion-list>
+
+      <!-- friend list page in group -->
+      <ion-item class="item-avatar" ng-repeat="friend in friends | filter:filter_word" href="#" ng-click="OnClickItem(friend.member_id)">
+        <img ng-src="{{friend.avatar_image}}">
+
+        <span class="friend-name">{{friend.name}}</span><br/>
+
+        <ul class="rating">
+          <li ng-repeat="r in maxStars track by $index">
+            <i class="icon" ng-class="$index < friend.stars && ('ion-ios7-star rating-star-yellow') || ('ion-ios7-star rating-star-gray')">
+            </i>
+          </li>
+        </ul>
+
+        <span class="item-note">
+          <i class="ion-checkmark" ng-click="OnClickCheckItem(friend.member_id, $event); item_checkbox=IsCheckedItem(friend.member_id) ? 'checked-item':'unchecked-item'" ng-class="item_checkbox"></i>
+        </span>
+      </ion-item>
+
+    </ion-list>
+
+  </ion-content>
+
+  <script id="templates/popover.html" type="text/ng-template">
+    <ion-popover-view class="platform-ios" style="padding-top: 20px; border-radius: 5px; top: 35px !important; text-align: left;">
+      <ion-content>
+
+        <div style="border-bottom: 1px solid #ddd; text-align: center; padding-top: 20px; padding-bottom: 10px; font-size: 18px;">Move All Selected To</div>
+
+        <div class="list">
+          <a class="item" href="#" ng-repeat="group in groups" style="color: #3984b4" ng-click="OnMoveToGroup(group.id)">{{group.name}} ({{group.friends_count}} members)</a>
+         
+        </div>
+
+      </ion-content>
+    </ion-popover-view>
+  </script>
+
+  <!-- footer -->
+  <div class="bar bar-footer bar-light">
+    <button class="button button-clear button-prev ng-hide" ng-show="prevVisibility == 'visible'" ng-click="onPrev()">Prev</button>
+
+    <div class="title">
+      <span class="page-prev" ng-show="prevVisibility == 'visible'">{{page_num-1}}</span>
+      <span class="page-cur">{{page_num}}</span>
+      <span class="page-next" ng-show="nextVisibility == 'visible'">{{page_num+1}}</span>
+    </div>
+
+    <button class="button button-clear pull-right button-next ng-hide" ng-show="nextVisibility == 'visible'" ng-click="onNext()">Next</button>
+  </div>
+
+</ion-view>

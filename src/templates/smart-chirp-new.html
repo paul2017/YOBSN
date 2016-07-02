@@ -1,0 +1,52 @@
+<ion-view view-title="New chirp">
+  <ion-content has-bouncing="false" id="smartChirpNew">
+    <div class="row text-area">
+      <div class="col"></div>
+      <div class="col col-90">
+        Compose new Smart Chirp
+        <form>
+          <textarea id="chirpText" ng-focus="hideFooter()" ng-model="chirp.text"></textarea>
+          <div class="row">
+            <div class="col-80">
+                <button ng-class="action_photo_active" ng-disabled="action_photo_active == 'activated'" class="button button-clear black first" ng-click="setAction('photo')"><i class="icon ion-images"></i> Attach Photos</button>
+                <button ng-class="action_video_active" ng-disabled="action_video_active == 'activated'" class="button button-clear black" ng-click="setAction('video')"><i class="icon ion-android-arrow-dropright-circle"></i> Attach Videos</button>
+            </div>
+            <div class="col-20 text-right">
+                <button ng-disabled="!canShare()" ng-click="postChirp()" class="button button-clear button-positive last">Share</button>
+            </div>
+          </div>
+        </form>
+        <div class="picture-preview">
+          <div ng-show="uploadpending">
+            <span class="progress">{{progress.info}}</span>
+            <progress value="{{progress.percent}}" max="100"></progress>
+            <p class="progress">
+              {{progress.percent|number:0}} %</br>
+              {{progress.loaded|number:0}}K / {{progress.total|number:0}}K
+            </p>
+          </div>
+          <img ng-src="{{thumb}}">
+        </div>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div id="newchirp-footer" ng-if="footerIsShow" hide-on-keyboard-open>
+      <div class="buttons-container" hide-on-keyboard-open>
+        <div class="buttons-stack">
+          <button ng-click="openGallery()" class="icon ion-images button button-block button-light">{{action_type}} From Camera Roll</button>
+          <button ng-click="takeAction()" class="icon ion-ios-camera button button-block button-light">{{action_text}}</button>
+          <button ng-click="cancel()" class="button button-block button-light">Cancel</button>
+          <!--
+          <div>path: {{path}}</div>
+          <div>progress: {{progress}}</div>
+          <div>bytesSent: {{bytesSent}}</div>
+          <div>responseCode: {{responseCode}}</div>
+
+          <div>attached name: {{attached_name}}</div>
+          <div>url: {{attached_url}}</div>
+      -->
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

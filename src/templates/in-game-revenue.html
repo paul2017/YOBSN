@@ -1,0 +1,41 @@
+<ion-view id="game-revenue-history" view-title="In Game Revenue">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+        <button id="refresh-button" class="button button-clear" ng-click="updateHistory(true)"><i class="icon ion-loop"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="has-header" overflow-scroll="true" scrolly="updateHistory()" canload="canLoad()">
+        <table id="revenue-history-table" class="scrolly-data">
+            <thead>
+                <tr>
+                    <th>Game</th>
+                    <th>Date</th>
+                    <th class="text-left">Commision</th>
+                    <th>Status</th>
+                    <th>Info</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr bindonce ng-repeat="item in history">
+                    <td bo-html="item.gameName"></td>
+                    <td bo-text="item.date | date:'short'"></td>
+                    <td>$<span bo-text="item.amt"></span></span>
+                    </td>
+                    <td class="status text-center">
+                        <i ng-show="item.status == 0" class="ion-android-alert assertive" title="canceled"></i>
+                        <i ng-show="item.status == 1" class="ion-checkmark-round balanced" title="validated"></i>
+                        <i ng-show="item.status == 2" class="ion-android-time" title="pending"></i>
+                        <i ng-show="item.status != 0 && item.status != 1 && item.status != 2" class="ion-help-circled" title="unknown"></i>
+                    </td>
+                    <td class="info text-center" ng-click="OnClickInfo(item.id)"><i class="ion-information-circled positive"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="empty-hist-message" ng-if="history.length == 0">Currently there is no In Game Revenue associated with your account.</div>
+        <div class="infinite-loading text-center" ng-if="canLoad()">
+            <ion-spinner icon="android"></ion-spinner>
+        </div>
+    </ion-content>
+</ion-view>

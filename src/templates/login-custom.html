@@ -1,0 +1,24 @@
+<ion-view hide-back-button="true" hide-nav-bar="true" cache-view="false">
+    <ion-content class="login-bg-custom loading-type-custom" ng-style="loadingBG">
+        <!-- Logo image -->
+        <div class="login-logo">
+            <img src="img/login/logo-for-login-crop@2x~ipad.png">
+        </div>
+        <div class="loading-custom">
+            <!-- Avatar -->
+            <div class="loading-avatar">
+                <img ng-src="{{loading.avatarURL}}">
+            </div>
+            <!-- Network Title -->
+            <div class="loading-network-title">
+                <h3>Social Network of</h3>
+                <h3>{{loading.nameText}}</h3>
+            </div>
+            <!-- Loading custon text -->
+            <div class="loading-custom-title">
+                <h3>{{loading.loadingText}}</h3>
+            </div>
+        </div>
+        <div ng-include="'templates/login-form.html'"></div>
+    </ion-content>
+</ion-view>

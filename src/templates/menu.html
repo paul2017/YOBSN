@@ -1,0 +1,37 @@
+<ion-side-menus enable-menu-with-back-views="false">
+    <!-- Center content -->
+    <ion-side-menu-content>
+        <ion-nav-bar class="nav-bar-header" align-title="center">
+            <ion-nav-back-button>
+                Back
+            </ion-nav-back-button>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+    <!-- Left menu -->
+    <ion-side-menu side="left" ng-class="menu.style">
+        <ion-header-bar class="menu-left-header" align-title="center" ng-class="menu.style">
+            <img ng-src="{{menu.menuLogoURL}}">
+        </ion-header-bar>
+        <ion-content class="menu-left-content" ng-class="menu.style" has-bouncing="true">
+            <ion-list class="menu-list" ng-class="menu.style">
+                <ion-item class="item-image-icon" nav-clear menu-close ng-href="#/{{item.link}}?v={{item.version}}" ng-repeat="item in menu.items" ng-class="[menu.style, item.first]">
+                    <div id="menu-{{item.action}}">
+                        <img ng-src="img/icon/sidebar-icons/{{item.icon}}">{{item.label}}
+                    </div>
+                </ion-item>
+                <!-- logout menu item -->
+                <ion-item class="item-image-icon" nav-clear menu-close href="#" ng-click="logout()" ng-class="menu.style">
+                    <img width="20px" src="img/icon/sidebar-icons/logout@2x.png">Logout
+                </ion-item>
+            </ion-list>
+        </ion-content>
+        <div id="version-info" class="bar bar-footer">
+            <div>Version : {{appVer}}</div>
+        </div>
+    </ion-side-menu>
+</ion-side-menus>

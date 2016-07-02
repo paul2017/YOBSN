@@ -1,0 +1,58 @@
+<ion-view id="game-revenue-detail" view-title="In Game Revenue Detail">
+    <ion-content has-bouncing="true">
+        <table id="revenue-detail-table">
+            <thead>
+                <tr>
+                    <th colspan=2>Revenue Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Game Title</th>
+                    <td>{{item.gameName}}</td>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <td>{{item.date | date:'short'}}</td>
+                </tr>
+                <tr>
+                    <th>Purchaser</th>
+                    <td>{{item.senderUsr}}</td>
+                </tr>
+                <tr>
+                    <th>Purchaser Amount</th>
+                    <td>${{item.purchaseAmt}}</td>
+                </tr>
+                <tr>
+                    <th>Apple Commission 30%</th>
+                    <td>${{item.appleCommission}}</td>
+                </tr>
+                <tr>
+                    <th>Receiver #1</th>
+                    <td>{{item.recvUsrL1}}</td>
+                </tr>
+                <tr>
+                    <th>Commission L1</th>
+                    <td>${{item.amtL1}}</td>
+                </tr>
+                <tr>
+                    <th>Receiver #2</th>
+                    <td>{{item.recvUsrL2}}</td>
+                </tr>
+                <tr>
+                    <th>Commission L2</th>
+                    <td>${{item.amtL2}}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>
+                        <i ng-show="item.status == 0" class="ion-android-alert assertive" title="canceled"></i>
+                        <i ng-show="item.status == 1" class="ion-checkmark-round balanced" title="validated"></i>
+                        <i ng-show="item.status == 2" class="ion-android-time" title="pending"></i>
+                        <i ng-show="item.status != 0 && item.status != 1 && item.status != 2" class="ion-help-circled" title="unknown"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </ion-content>
+</ion-view>

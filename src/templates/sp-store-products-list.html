@@ -1,0 +1,54 @@
+<ion-view view-title = "Social Points Shop">
+  	<ion-content class="has-header">
+    <!-- Header -->
+		<div class = "row" style="height:7vh;">
+			<div class="col col-29" style="padding-top:7px;padding-bottom:7px;">
+			  SP&nbspBalance:
+			</div>
+			<div class="col col-26" style="padding-top:7px;padding-bottom:7px;color:#3984b4;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;" >
+			  {{balance}}&nbspSP&nbsp<img style="width:11px;height15px;" ng-src="img/sp-3d-image.png">
+			</div>
+
+		  <button class="col col-45" id="purchaseHistory-button" ng-click="purchaseHistory()" style=" background-color:#2b83bb; border-color:#2b83bb; color:white; border-radius: 5px;float:right; padding-top:0.2em;padding-bottom:0.2em; padding-right:0px; line-height: inherit; min-width: 0px; min-height: 0px;">
+			  <i class="icon ion-clock" id="history_icon"></i>Purchase History</button>
+		</div>
+		<div class="row" style="padding-top:10px; padding-bottom:10px">
+			{{categoryName}}
+		</div>
+
+		<ion-list direction="y" has-bouncing="true">
+			<ion-item ng-repeat="item in products.items" style="margin:0px; padding:0px">
+	        	<div class="row" >
+	        		<div class="col col-30" style="padding-top: 8%" >
+		        		<a href="#/app/sp-store-product-info/{{item.id}}" style="padding-left: inherit;border: 0px solid;">
+		        			<img style="width:100%" ng-src="{{item.thumbnail}}">
+		        		</a>
+		        	</div>
+					<div class="col col-63">
+						<div class="showhide" showhide>
+		        			<div class="less">
+				  			 	<a href="#/app/sp-store-product-info/{{item.id}}" style="text-decoration: inherit;color: black;">
+					  			 	<h2>{{item.name}}</h2>
+					  			 	<p style="white-space: pre;  height:100px;" ng-bind-html="item.shortDescription"></p>
+				  			 	</a>
+		        			</div>
+		        			<div class="more">
+				  			 	<a href="#/app/sp-store-product-info/{{item.id}}" style="text-decoration: inherit;color: black;">
+			        				<h2>{{item.name}}</h2>
+			        				<p style="white-space: pre;" ng-bind-html="item.shortDescription"></p>
+					        	</a>
+					        </div>
+		        			<div class="row show" style="display: -webkit-box;">
+			        			{{item.price}}&nbspSP
+			        			<h3 class="col" href="#" style="color:#3984b4;padding: 0px;text-align: right;"></h3>
+		        			</div>
+	        			</div>
+        			</div>
+        			<div class="col col-7">
+        				<img src="img/arrow/announcements-tools-arrow@2x.png" style="width:25px; float:right;margin-right:0px; padding-top: 50px;" align="middle">
+        			</div>
+        		</div>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,20 @@
+<ion-view view-title="Pdf Viewer">
+		<ion-content>
+		<div ng-controller="PdfController" class="text-center container">
+			<div class="row">
+				<div class="btn-group">
+					<button class="btn" ng-click="gotoPage(1)">|&lt;</button>
+					<button class="btn" ng-click="prevPage()">&lt;</button>
+					<button class="btn" ng-click="nextPage()">&gt;</button>
+					<button class="btn" ng-click="gotoPage(totalPages)">&gt;|</button>
+				</div>
+			</div>
+			<div class="row">
+				<span class="label" ng-show="totalPages">{{currentPage}}/{{totalPages}}</span>
+			</div>
+			<div class="row">
+				<pdfviewer src="{{pdfURL}}" on-page-load='pageLoaded(page,total)' id="viewer" load-progress='loadProgress(loaded, total, state)'></pdfviewer>
+			</div>
+		</div>
+		</ion-content>
+</ion-view>

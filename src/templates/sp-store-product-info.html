@@ -1,0 +1,44 @@
+<ion-view view-title = "Social Points Shop" >
+  	<ion-content class="has-header" has-bouncing="true">
+    <!-- Header -->
+		<div class = "row" style="height:7vh;">
+			<div class="col col-29" style="padding-top:7px;padding-bottom:7px;">
+			  SP&nbspBalance:
+			</div>
+			<div class="col col-26" style="padding-top:7px;padding-bottom:7px;color:#3984b4;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;" >
+			  {{balance}}&nbspSP&nbsp<img style="width:11px;height15px;" ng-src="img/sp-3d-image.png">
+			</div>
+
+		  <button class="col col-45" id="purchaseHistory-button" ng-click="purchaseHistory()" style=" background-color:#2b83bb;border-color:#2b83bb; color:white; border-radius: 5px;float:right; padding-top:0.2em;padding-bottom:0.2em; padding-right:0px; line-height: inherit; min-width: 0px; min-height: 0px;">
+			  <i class="icon ion-clock" id="history_icon"></i>Purchase History</button>
+		</div>
+			<div class="col text-center">
+
+				<button class="" ng-click="purchaseProduct()" ng-show="purchaseVisibility == 'visible'" style="background-color: green; border-color:green; border-radius: 5px; width:130px;  color: white; line-height: inherit; min-width: 0px; min-height: 0px;">Purchase<i class="icon ion-chevron-right" style="padding-left:10px" id="history_icon"></i></button>
+				<button class="" ng-click="purchaseProduct()" ng-show="downloadVisibility == 'visible'" style="background-color: green; border-color:green; border-radius: 5px; width:130px;  color: white; line-height: inherit; min-width: 0px; min-height: 0px;">Download<i class="icon ion-ios7-upload-outline" style="padding-left:10px;" id="history_icon"></i></button>
+			</div>
+			<div class="col text-center" style="color:#3984b4">
+				{{product.name}}
+			</div>
+			<div class="col text-center">
+				<img style="width:60%;" ng-src="{{product.image}}">
+			</div>
+			<div class="row" style="display: -webkit-inline-box;">
+				<div class="col col-45" style="text-align:right">Price:&nbsp</div>
+				<div class="col col-45" style="color:#3984b4; text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">{{product.price}}&nbspSP&nbsp<img style="width:15px; height15px;" ng-src="img/sp-3d-image@2x.png">
+				</div>
+			</div>
+
+			<div class="col" >
+				<p style="white-space: pre;font-family: inherit;" ng-bind-html="product.description"></p>
+			</div>
+
+			<div class="col text-center">
+
+				<button class="" ng-click="purchaseProduct()" ng-show="purchaseVisibility == 'visible'" style="background-color: green; border-color:green; border-radius: 5px; width:130px;  color: white; line-height: inherit; min-width: 0px; min-height: 0px;">Purchase<i class="icon ion-chevron-right" style="padding-left:10px" id="history_icon"></i></button>
+				<button class="" ng-click="purchaseProduct()" ng-show="downloadVisibility == 'visible'" style="background-color: green; border-color:green; border-radius: 5px; width:130px;  color: white; line-height: inherit; min-width: 0px; min-height: 0px;">Download<i class="icon ion-ios7-upload-outline" style="padding-left:10px;" id="history_icon"></i></button>
+
+			</div>
+
+	</ion-content>
+</ion-view>

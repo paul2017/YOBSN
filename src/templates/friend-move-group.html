@@ -1,0 +1,58 @@
+<ion-view view-title="{{friend.group_name}}">
+
+  <div class="bar bar-subheader move-friend-group">
+
+    <!-- Friend Info -->
+    <div class="item-avatar">
+      <img ng-src="{{friend.avatar_image}}">
+
+      <span class="friend-name">{{friend.name}}</span><br/>
+
+      <ul class="rating">
+        <li ng-repeat="r in maxStars track by $index">
+          <i class="icon" ng-class="$index < friend.stars && ('ion-ios7-star rating-star-yellow') || ('ion-ios7-star rating-star-gray')">
+          </i>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+
+  <ion-content has-bouncing="true" class="has-subheader move-friend-group">
+
+    <!-- Group list -->
+    <ion-list class="move-group-list">
+
+      <ion-item class="item-image-icon" href="#" ng-repeat="group in groups" ng-click="OnClickItem(group.id)">
+        <img src="img/icon/friend-icons/folder-black@2x.png" class="first-img">
+        <span>{{group.name}}</span>
+        <span class="item-note group-list-note">
+          <div style="float: right">
+            <span class="friend-count-span">{{group.friends_count}}</span>
+          </div>
+          <div style="float: right">
+
+            <i class="ion-checkmark" style="margin-right: 50px;" ng-click="OnClickCheckItem(group.id, $event); item_checkbox=IsCheckedItem(group.id) ? 'checked-item':'unchecked-item'" ng-class="item_checkbox"></i>
+
+          </div>
+          <div style="float: right">
+            <span class="group-count-span">{{groups_count}}</span>
+          </div>
+        </span>
+        <img src="img/icon/friend-icons/man-black@2x.png" class="last-img">
+      </ion-item>
+
+
+    </ion-list>
+
+  </ion-content>
+
+  <div class="bar bar-footer bar-stable move-friend-group">
+    <button class="button button-block friend-move-button" ng-click="DoFriendMoveGroup()">
+      Move
+    </button>
+  </div>
+
+</ion-view>
+

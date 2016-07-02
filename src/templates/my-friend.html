@@ -1,0 +1,49 @@
+<ion-view view-title="My Friend">
+
+  <ion-content has-bouncing="true">
+
+    <ion-list class="my-friend">
+
+      <!-- Friend Info -->
+      <ion-item class="item-avatar" href="#">
+        <img ng-src="{{friend.avatar_image}}">
+
+        <span class="friend-name">{{friend.name}}</span><br/>
+
+        <ul class="rating">
+          <li ng-repeat="r in maxStars track by $index">
+            <i class="icon" ng-class="$index < friend.stars && ('ion-ios7-star rating-star-yellow') || ('ion-ios7-star rating-star-gray')">
+            </i>
+          </li>
+        </ul>
+
+        <div class="my-friend-group-name">
+          Group: <span style="color: #466a8f;">{{friend.group_name}}</span>
+        </div>
+      </ion-item>
+
+      <!-- Operations for Friend -->
+      <ion-item class="item-image-icon" ng-href="#/app/friend-profile/{{friend.member_id}}">
+        <img src="img/icon/friend-icons/public-profile@2x.png" class="first-img">
+        <span>See {{friend.name}}'s profile</span>
+      </ion-item>
+
+      <ion-item class="item-image-icon" href="#" ng-click="sendHug()">
+        <img src="img/icon/friend-icons/send-hug@2x.png" class="first-img">
+        <span>Send a Hug to {{friend.name}}</span>
+      </ion-item>
+
+      <ion-item class="item-image-icon" ng-href="#/app/friend-move-group/{{friend.member_id}}">
+        <img src="img/icon/friend-icons/move-to-another-group@2x.png" class="first-img">
+        <span>Move to Another Group</span>
+      </ion-item>
+
+      <ion-item class="item-image-icon" href="#" ng-click="RemoveFriend(friend.member_id)">
+        <img src="img/icon/friend-icons/remove-friend@2x.png" class="first-img">
+        <span>Remove from My Friends</span>
+      </ion-item>
+
+    </ion-list>
+
+  </ion-content>
+</ion-view>

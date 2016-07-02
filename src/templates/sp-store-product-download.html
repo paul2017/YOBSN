@@ -1,0 +1,36 @@
+<ion-view view-title="Purchase History">
+  	<ion-content class="has-header" has-bouncing="true">
+ 		<div class = "row" style="height:7vh;">
+			<div class="col col-29" style="padding-top:7px;padding-bottom:7px;">
+			  SP&nbspBalance:
+			</div>
+			<div class="col col-26" style="padding-top:7px;padding-bottom:7px;color:#3984b4;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;" >
+			  {{balance}}&nbspSP&nbsp<img style="width:11px;height15px;" ng-src="img/sp-3d-image.png">
+			</div>
+
+		  <button class="col col-45" id="purchaseHistory-button" ng-click="purchaseHistory()" style=" background-color:#2b83bb; border-color:#2b83bb; color:white; border-radius: 5px;float:right; padding-top:0.2em;padding-bottom:0.2em; padding-right:0px; line-height: inherit; min-width: 0px; min-height: 0px;">
+			  <i class="icon ion-clock" id="history_icon"></i>Purchase History</button>
+		</div>
+
+			<div class="col text-center">
+				<p style="padding-left:15%; padding-right:15%">{{msg}}</p>
+			</div>
+			<div class="item item-thumbnail-left" style="margin: 0px;">
+					<img ng-src="{{product.thumbnail}}">
+					<h2>{{product.name}}</h2>
+					<p style="white-space: pre;font-family: inherit;" ng-bind-html="product.shortDescription"></p>
+			</div>
+			<div class="col text-center">
+				<div class="col text-center">
+				    <button ng-click="download()" class="" ng-hide="isProductDownloaded" style="background-color: green; border-color:green; border-radius: 5px; color: white;width:130px;  line-height: inherit; min-width: 0px; min-height: 0px;"><i class="icon ion-ios7-upload-outline" style="padding-right:10px;" id="history_icon"></i>Download</button>
+
+				    <button ng-click="load()" class="" ng-show="isProductDownloaded" style="background-color: green; border-color:green; border-radius: 5px; color: white;width:130px;line-height: inherit; min-width: 0px; min-height: 0px;"><i class="icon ion-ios7-upload-outline" style="padding-right:10px;" id="history_icon"></i>Open</button>
+				</div>
+			</div>
+			<div class="row" style="padding:0px">
+					<span class="col col-60 text-center" style="color: gray;">For&nbspdownloads&nbspone&nbspmore&nbspsee&nbsp</span>
+					<span class="col col-40 text-center">Purchase History</span>
+
+			</div>
+		</ion-content>
+</ion-view>

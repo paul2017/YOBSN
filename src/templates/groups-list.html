@@ -1,0 +1,34 @@
+<ion-view view-title="Groups List">
+
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" style="color: #ffffff" ng-click=""> + New</button>
+  </ion-nav-buttons>
+
+  <ion-content has-bouncing="true">
+
+    <ion-list class="group-list">
+
+      <!-- Groups List -->
+      <ion-item class="item-image-icon" href="#" ng-repeat="group in groups" ng-click="OnClickItem(group.id)">
+        <img src="img/icon/friend-icons/folder-black@2x.png" class="first-img">
+        <span>{{group.name}}</span>
+        <span class="item-note group-list-note">
+          <div style="float: right">
+            <span class="friend-count-span">{{group.friends_count}}</span>
+          </div>
+          <div style="float: right">
+
+            <img src="img/icon/friend-icons/friends-groups-settings-dark@2x.png" class="group-setting-img" ng-click="OnClickCheckItem(group.id, $event);">
+
+          </div>
+          <div style="float: right">
+            <span class="group-count-span">{{groups_count}}</span>
+          </div>
+        </span>
+        <img src="img/icon/friend-icons/man-black@2x.png" class="last-img">
+      </ion-item>
+
+    </ion-list>
+
+  </ion-content>
+</ion-view>

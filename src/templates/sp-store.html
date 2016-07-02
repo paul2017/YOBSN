@@ -1,0 +1,54 @@
+<ion-view view-title="Social Points Store">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button
+>        <button id="refresh-button" class="button button-clear" ng-click="reload()"><i class="icon ion-loop"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="has-header" scroll="false">
+        <!-- Header -->
+        <div class="row" style="height:7vh;">
+            <div class="col col-29" style="padding-top:7px;padding-bottom:7px;">
+                SP&nbspBalance:
+            </div>
+            <div class="col col-26" style="padding-top:7px;padding-bottom:7px;color:#3984b4;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
+                {{balance}}&nbspSP&nbsp<img style="width:11px;height15px;" ng-src="img/sp-3d-image.png">
+            </div>
+            <button class="col col-45" id="purchaseHistory-button" ng-click="purchaseHistory()" style=" background-color:#2b83bb;border-color:#2b83bb; color:white; border-radius: 5px;float:right; padding-top:0.2em;padding-bottom:0.2em; padding-right:0px; line-height: inherit; min-width: 0px; min-height: 0px;">
+                <i class="icon ion-clock" id="history_icon"></i>Purchase History</button>
+        </div>
+        <!-- Search Input -->
+        <div class="item item-input-inset" style="background:rgb(221,221,221); height:7vh">
+            <label class="item-input-wrapper" style="background:white;">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Search">
+            </label>
+        </div>
+        <!-- Features Products -->
+        <p class="labelSize" style="height:5vh">Features Products</p>
+        <ion-scroll direction="x" has-bouncing="true" style="height:20vh">
+            <div class="row">
+                <div class="col col-30" ng-repeat="item in features.items" style="margin-right:20px; margin-left:20px">
+                    <div class="infinite-loading text-center" ng-hide="item.thumbnail">
+                        <i class="icon ion-loading-c icon-loading-a"></i>
+                    </div>
+                    <a ui-sref="app.sp-store-product-info({id:item.id})">
+                        <img class="rectangle" style="width:80px; height:80px" ng-src="{{item.thumbnail}}">
+                    </a>
+                </div>
+            </div>
+        </ion-scroll>
+        <!-- Categories -->
+        <p class="labelSize" style="height:5vh">Categories</p>
+        <ion-scroll direction="y" style="height:44vh" has-bouncing="true" autoscroll="true">
+            <ion-item ng-repeat="item in categories.items" style="margin:0px; padding:0px;">
+                <a ui-sref="app.sp-store-products-list({id:item.id})" style="text-decoration: inherit;color: black;">
+                    <div class="category-item-content">
+                        <img src="img/icon/sp-store-icons/{{item.icon}}" style="width:25px;margin-right:0px"> {{item.name}}
+                        <img src="img/arrow/announcements-tools-arrow@2x.png" style="width:25px; float:right;margin-right:0px; padding-top: 13px;">
+                    </div>
+                </a>
+            </ion-item>
+        </ion-scroll>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,11 @@
+{
+  "name": "YOBSN",
+  "app_id": "",
+  "proxies": [
+	{
+		"path": "/remote-yobsn.php",
+		"proxyUrl": "https://yobsn.com/remote-yobsn.php"
+	}
+  ],
+  "gulpStartupTasks": ["sass", "watch"]
+}

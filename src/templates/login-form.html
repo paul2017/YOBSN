@@ -1,0 +1,37 @@
+<form name="loginForm">
+    <div class="card login-form margin-20">
+        <div class="login-error ng-hide" ng-show="is_error">
+            <span>Invalid Username or Password</span>
+        </div>
+        <!-- username -->
+        <label class="item item-input item-login item-login-username">
+            <span class="input-label">Username</span>
+            <input type="text" placeholder="Member Username" ng-model="loginData.username">
+        </label>
+        <!-- password -->
+        <label class="item item-input item-login item-login-password">
+            <span class="input-label">Password</span>
+            <input type="password" placeholder="Enter Password" ng-model="loginData.password">
+        </label>
+        <!-- remember toggle -->
+        <div class="item item-input item-login item-login-remember">
+            <span class="input-label">Remember Me</span>
+            <label class="toggle toggle-positive">
+                <input type="checkbox" ng-model="loginData.remember">
+                <div class="track">
+                    <div class="handle"></div>
+                </div>
+            </label>
+        </div>
+    </div>
+    <!-- login button -->
+    <div class="margin-20">
+        <button class="button button-block button-login" ng-click="login()">Log in</button>
+    </div>
+    <!-- signup button -->
+
+    <div class="margin-20 signup-margin">
+      <a class="button button-block button-signup" ui-sref="license-agreement">Free Sign Up</a>
+    </div>
+
+</form>

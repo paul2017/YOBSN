@@ -1,0 +1,45 @@
+<ion-view id="purchasedHistory" view-title="Purchase History">
+     	<ion-content class = "has-header">
+		    <header class = "row">
+	 	     		<div style="padding-top:7px; padding-bottom:7px; width:50vw">
+		      			Social Points Balance:
+		      		</div>
+		      		<div style="color:#3984b4; padding-top:7px; padding-bottom:7px; width:50vw; text-align:center; text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
+			      		{{balance}}&nbspSP&nbsp<img style="width:11px;height15px;" ng-src="img/sp-3d-image@2x.png">
+			   		</div>
+			</header>
+			<ion-list direction="y" has-bouncing="true">
+				<ion-item ng-repeat="item in history.items" style="margin:0px; padding:0px">
+
+			        	<div class="row">
+			        		<div class="col col-33">
+			        			<img style="width:100%" ng-src="{{item.thumb}}">
+			        		</div>
+			        		<div class ="col col-67">
+				        		<div class="showhide" showhide>
+				        			<div class="less">
+				        				<h2>{{item.name}}</h2>
+					        			<p style="white-space: pre;font-family: inherit; height:100px" ng-bind-html="item.shortDescription"></p>
+				        			</div>
+
+				        			<div class="more">
+				        				<h2>{{item.name}}</h2>
+					        			<p style="white-space:pre; font-family: inherit;" ng-bind-html="item.shortDescription"></p>
+					        		</div>
+
+				        			<div class="row show" style="display: -webkit-box;">
+				        			<div class="col col-45" style="color:#3984b4">{{item.price}} sp</div>
+				        			<h3 class="col" href="#" style="color:#3984b4"></h3>
+				        			</div>
+			        			</div>
+		        			</div>
+		        		</div>
+
+						<div style="float:right; margin-right:10px;margin-top:0px;">
+							<button ng-click="download(item)" ng-hide="item.isDownloaded" style="background-color: green; border-color:green; border-radius: 10px; color: white;width:100px;"><i class="icon ion-ios7-download-outline" style="margin-right:5px"></i>Download</button>
+						    <button ng-click="load(item)" ng-show="item.isDownloaded" style="background-color: green; border-color:green; border-radius: 10px; color: white;width:100px;"><i class="icon ion-ios7-upload-outline" style="padding-right:5px;"></i>Open</button>
+						</div>
+				</ion-item>
+			</ion-list>
+  		</ion-content>
+</ion-view>

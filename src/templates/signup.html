@@ -1,0 +1,52 @@
+<ion-view cache-view="false">
+    <ion-content class="login-bg-simple">
+        <div id="signup">
+            <div class="login-logo">
+                <img src="img/login/logo-for-login-crop@2x~ipad.png">
+            </div>
+            <form name="userForm" ng-submit="signup(userForm.$valid)" novalidate>
+            <div class="row">
+                <div class="col col-33">
+                    <div class="form-deco"></div>
+                </div>
+                <div class="col col-67">
+                    <div class="form-inputs">
+                        <div class="input">
+                            <input class="first" type="text" placeholder="Referrer's username or email" name="referrer" ng-model="formdata.RefID" required>
+                            <span class="error" ng-show="userForm.referrer.$invalid && !userForm.referrer.$pristine">Referer is required</span>
+                        </div>
+                        <div class="input">
+                            <input type="text" placeholder="Your First Name" name="firstname" ng-model="formdata.Firstname" required>
+                            <span class="error" ng-show="userForm.firstname.$invalid && !userForm.firstname.$pristine">Firstname is required</span>
+                        </div>
+                        <div class="input">
+                            <input type="text" placeholder="Your Last Name" name="lastname" ng-model="formdata.Lastname">
+                        </div>
+                        <div class="input">
+                            <input type="email" placeholder="Your Email" name="email" ng-model="formdata.Email" required>
+                            <span class="error" ng-show="userForm.email.$invalid && !userForm.email.$pristine">A valid email is required</span>
+                        </div>
+                        <div class="input">
+                            <input class="last" type="password" placeholder="Choose a Password" name="password" ng-model="formdata.Password" required>
+                            <span class="error" ng-show="userForm.password.$invalid && !userForm.password.$pristine">Password is required</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-if="error">
+                <div class="col">
+                    <span class="error">{{error}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="button button-block button-login" ng-disabled="userForm.$invalid">Sign Up</button>
+                </div>
+                <div class="col">
+                    <a class="button button-block button-positive" ui-sref="login-simple">Cancel</a>
+                </div>
+            </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

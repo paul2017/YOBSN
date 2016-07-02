@@ -1,0 +1,33 @@
+<ion-view view-title="Social Points History">
+
+  <ion-content class="has-header" overflow-scroll="true" scrolly="updateHistory()" canload="canLoad()">
+    <div id="sp-history-header">
+        <img src="img/cover.png">
+        <span class="balance-title">Social Points Balance: </span><span class="balance-amount">{{balance}}</span>
+    </div>
+    <table id="sp-history-table" class="scrolly-data">
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th class="sppoints">Social Points</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th class="spbalance">Running Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr bindonce ng-repeat="item in history.items">
+          <td bo-html="item.description"></td>
+          <td class="sppoints"><span bo-text="item.amount"></span> SP</td>
+          <td bo-text="item.date | date:'short'"></td>
+          <td class="status" bo-html="item.displayStatus"></td>
+          <td class="spbalance"><span bo-text="item.runningBalance"></span> SP</td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="empty-hist-message" ng-if="history.items.length == 0">Currently there is no Social Point History associated with your account.</div>
+    <div class="infinite-loading text-center" ng-if="canLoad()">
+      <ion-spinner icon="android"></ion-spinner>
+    </div>
+  </ion-content>
+</ion-view>

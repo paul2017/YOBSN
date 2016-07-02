@@ -1,0 +1,154 @@
+<ion-view view-title="Profile">
+
+  <ion-content has-bouncing="true" class="profile">
+
+    <div class="profile-avatar">
+      <img ng-src="{{profile.avatar_image}}">
+
+      <ul class="rating">
+        <li ng-repeat="r in maxStars track by $index">
+          <i class="icon" ng-class="$index < profile.stars && ('ion-ios7-star rating-star-yellow') || ('ion-ios7-star rating-star-gray')">
+          </i>
+        </li>
+      </ul>
+
+    </div>
+
+    <!-- first name -->
+    <div class="row">
+      <div class="col">
+        <div>
+          First Name
+        </div>
+      </div>
+
+      <div class="col">
+        <div>
+          {{profile.firstname}}
+        </div>
+      </div>
+    </div>
+
+    <!-- last name -->
+    <div class="row">
+      <div class="col">
+        <div>
+          Last Name
+        </div>
+      </div>
+
+      <div class="col">
+        <div>
+          {{profile.lastname}}
+        </div>
+      </div>
+    </div>
+
+    <!-- user name -->
+    <div class="row">
+      <div class="col">
+        <div>
+          User Name
+        </div>
+      </div>
+
+      <div class="col">
+        <div>
+          {{profile.username}}
+        </div>
+      </div>
+    </div>
+
+    <!-- country -->
+    <div class="row">
+      <div class="col">
+        <div>
+          Country
+        </div>
+      </div>
+
+      <div class="col">
+        <div>
+          {{profile.country}}
+        </div>
+      </div>
+    </div>
+
+    <!-- work status -->
+    <div class="row">
+      <div class="col">
+        <div>
+          Work Status
+        </div>
+      </div>
+
+      <div class="col">
+        <div>
+          {{profile.work_status}}
+        </div>
+      </div>
+    </div>
+
+    <!-- job title -->
+    <div class="row">
+      <div class="col">
+        <div>
+          Job Title
+        </div>
+      </div>
+
+      <div class="col">
+        <div>
+          {{profile.job_title}}
+        </div>
+      </div>
+    </div>
+
+    <!-- date of birth -->
+    <div class="row">
+      <div class="col">
+        <div>
+          Date of Birth
+        </div>
+      </div>
+
+      <div class="col">
+        <div>
+          {{profile.birthdate}}
+        </div>
+      </div>
+    </div>
+
+    <!-- interests -->
+    <div class="row">
+      <div class="col">
+        <div>
+          Interests
+        </div>
+      </div>
+
+      <div class="col">
+        <div>
+          {{profile.interests}}
+        </div>
+      </div>
+    </div>
+
+    <!-- comments -->
+    <div class="row">
+      <div class="col">
+        <div>
+          Comments
+        </div>
+      </div>
+
+      <div class="col">
+        <div>
+          {{profile.comments}}
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+
+</ion-view>

@@ -1,0 +1,60 @@
+<ion-view id="smartChirpSingle" view-title="Comments">
+  <ion-nav-buttons side="left">
+    <button id="refresh-button" class="button button-clear" ng-click="refreshComment(item.id)"><i class="icon ion-loop"></i>
+    </button>
+  </ion-nav-buttons>
+  <ion-content has-bouncing="true" overflow-scroll="true" scrolly="getMoreComments(item.id)" canload="comments.hasNext">
+    <div id="chirp-{{item.id}}" class="item chirp item-text-wrap">
+      <div class="row user">
+        <div class="col col-20">
+          <img ng-src="{{item.avatar_image}}" class="avatar-circle" />
+        </div>
+        <div class="col col-80">
+          <div class="right time"><span am-time-ago="item.date" am-preprocess="unix"></span> - {{item.hours}}</div>
+          <h2>{{item.name}}</h2>
+          <div class="stars"><i class="star star-{{item.stars}}"></i>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="message" ng-bind-html="item.message"></div>
+        </div>
+      </div>
+    </div>
+    <ion-list class="comments">
+      <ion-item ng-repeat="comment in item.comments.items | orderBy:'date'" class="item-text-wrap">
+        <div id="comment-{{comment.id}}">
+          <div class="row user">
+            <div class="col col-20">
+              <img ng-src="{{comment.avatar_image}}" class="avatar-circle" />
+              <div class="stars text-center"><i class="star star-{{comment.stars}}"></i>
+              </div>
+            </div>
+            <div class="col col-80">
+              <div class="right time"><span am-time-ago="comment.date" am-preprocess="unix"></span> - {{comment.hours}}</div>
+              <h2>{{comment.name}}</h2>
+              <div class="right">
+                <button ng-show="comment.can_be_deleted" ng-click="deleteComment(item.id, comment.id)" class="button button-clear icon ion-ios-trash-outline"></button>
+              </div>
+              <div class="message" ng-bind-html="comment.message"></div>
+            </div>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+
+    <div class="infinite-loading text-center" ng-if="comments.hasNext">
+      <ion-spinner icon="android"></ion-spinner>
+    </div>
+  </ion-content>
+  <ion-footer-bar align-title="left">
+    <div class="bar bar-footer item-input-inset">
+      <label class="item-input-wrapper">
+        <input id="comment-input" type="text" ng-model="comment" placeholder="Comment">
+      </label>
+      <button class="button button-clear" ng-click="sendComment(item.id)">
+        Share
+      </button>
+    </div>
+  </ion-footer-bar>

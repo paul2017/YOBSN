@@ -1,0 +1,11 @@
+<ion-view view-title="Company Updates" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+        <button id="refresh-button" class="button button-clear" ng-click="reload()"><i class="icon ion-loop"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-content has-bouncing="true" id="company-update-content">
+        <iframe id="company-updates" ng-src="{{iframeurl}}"></iframe>
+    </ion-content>
+</ion-view>

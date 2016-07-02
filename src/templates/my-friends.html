@@ -1,0 +1,52 @@
+<ion-view view-title="My Friends">
+  
+  <ion-content has-bouncing="true">
+
+    <ion-list class="my-friend-list">
+
+      <!-- Unsorted Friends -->
+      <ion-item class="item-image-icon" href="#/app/friends-list/0">
+        <img src="img/icon/friend-icons/folder-black@2x.png" class="first-img">
+        <span>Unsorted Friends</span>
+        <span class="item-note">{{unsortedFriends.friends_count}}</span>
+        <img src="img/icon/friend-icons/man-black@2x.png" class="last-img">
+      </ion-item>
+
+      <!-- Groups List -->
+      <ion-item class="item-image-icon" ng-href="#/app/groups-list">
+        <img src="img/icon/friend-icons/folder-blue@2x.png" class="first-img">
+        <span>Groups List</span>
+        <span class="item-note group-list-note">
+          <div style="float: right">
+            <span class="friend-count-span">{{friends_count}}</span>
+          </div>
+          <div style="float: right">
+            <img src="img/icon/friend-icons/folder-black@2x.png" class="group-count-img">
+          </div>
+          <div style="float: right">
+            <span class="group-count-span">{{groups_count}}</span>
+          </div>
+        </span>
+        <img src="img/icon/friend-icons/man-black@2x.png" class="last-img">
+      </ion-item>
+
+      <!-- Friend Requests -->
+      <ion-item class="item-image-icon" ng-href="#/app/friends-request">
+        <img src="img/icon/friend-icons/man-green@2x.png" class="first-img">
+        <span>Friend Requests</span>
+        <div class="request-count" style="color: #ffffff;">
+          {{request_count}}
+        </div>
+      </ion-item>
+
+      <!-- Friend Search -->
+      <ion-item class="item-image-icon" href="#/app/friend-search">
+        <img src="img/icon/friend-icons/add-friends@2x.png" class="first-img" style="max-width: 26px;">
+        <span>Search Friends</span>
+      </ion-item>
+
+    </ion-list>
+
+
+  </ion-content>
+</ion-view>
